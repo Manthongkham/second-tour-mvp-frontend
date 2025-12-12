@@ -28,6 +28,26 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+
+
+      <div className="chat-input-container">
+        <div className="chat-input-wrap">
+          <textarea
+          placeholder="User Input Goes Here..."
+          className="chat-input"
+          rows={1}
+          maxLength={500}
+          />
+
+          <button className="chat-send-btn" type="button" aria-label="Send">
+            ↑
+          </button>
+
+        </div>
+        
+      </div>
+
+
     </>
   )
 }
