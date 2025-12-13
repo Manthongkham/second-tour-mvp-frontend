@@ -1,10 +1,28 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
+
+  const autoResize = () => { 
+    const el = textareaRef.current
+    if (!el) return
+
+    if (el.value.length === 0) {
+      el.style.height = 'auto'
+      return
+    }
+
+    const MAX_LINES = 7
+    const LINE_HEIGHT = 20 // must match your CSS line-height: 20px
+
+    el.style.height = 'auto'
+    el.style.height = Math.min(el.scrollHeight, MAX_LINES * LINE_HEIGHT) + 'px'
+  }
 
   return (
     <>
@@ -33,10 +51,12 @@ function App() {
       <div className="chat-input-container">
         <div className="chat-input-wrap">
           <textarea
+          ref={textareaRef}     
+          onInput={autoResize}
           placeholder="User Input Goes Here..."
           className="chat-input"
           rows={1}
-          maxLength={500}
+          maxLength={1500}
           />
 
           <button className="chat-send-btn" type="button" aria-label="Send">

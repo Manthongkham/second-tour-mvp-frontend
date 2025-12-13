@@ -92,6 +92,9 @@ END User Input Area
   padding: 10px 0 10px 8px;
   resize: none;
   overflow: hidden;
+
+  overflow-y: auto;                                     /* allow scroll after max */
+  max-height: calc(20px * 7);
 }
 
 .chat-input::placeholder {
